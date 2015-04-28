@@ -14,7 +14,9 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.htm</url-pattern>
+        <url-pattern>/translate.jsp</url-pattern>
+        <url-pattern>/translate.html</url-pattern>
+        <url-pattern>*.html</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -22,6 +24,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>redirect.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

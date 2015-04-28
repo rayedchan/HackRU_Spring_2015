@@ -1,5 +1,6 @@
-com\rayedchan\hackruspring2015\HackRUSpring2015.class
-com\rayedchan\hackruspring2015\Data.class
-com\rayedchan\hackruspring2015\GoogleTranslate.class
-com\rayedchan\hackruspring2015\Language.class
-com\rayedchan\hackruspring2015\MainObject.class
+edu\rutgers\hackruspring2015\HackRUSpring2015.class
+edu\rutgers\hackruspring2015\GoogleTranslate.class
+edu\rutgers\hackruspring2015\gson\lang\objects\Data.class
+edu\rutgers\hackruspring2015\controllers\TranslateController.class
+edu\rutgers\hackruspring2015\gson\lang\objects\Language.class
+edu\rutgers\hackruspring2015\gson\lang\objects\MainObject.class
