@@ -16,8 +16,12 @@
 <h2>Submitted Information</h2>
    <table>
     <tr>
-        <td>Content</td>
-        <td>${content}</td>
+        <td>Text: </td>
+        <td>${text}</td>
+    </tr>
+     <tr>
+        <td>Translated Text: </td>
+        <td>${translatedText}</td>
     </tr>
 </table> 
 </body>

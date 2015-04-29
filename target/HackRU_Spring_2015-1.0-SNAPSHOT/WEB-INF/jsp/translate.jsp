@@ -18,8 +18,8 @@
         <form:form action="translate/process" method="POST" commandName="userTranslateForm">
             <table>
                 <tr>
-                    <td><form:label path="content">Content</form:label></td>
-                    <td><form:input path="content" /></td>
+                    <td><form:label path="text">Text</form:label></td>
+                    <td><form:input path="text" /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" value="Submit" /></td>

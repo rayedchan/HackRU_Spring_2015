@@ -6,15 +6,15 @@ package edu.rutgers.hackruspring2015.models;
  */
 public class TranslateForm 
 {
-    private String content;
+    private String text;
     
-    public String getContent()
+    public String getText()
     {
-        return this.content;
+        return this.text;
     }
     
-    public void setContent(String content)
+    public void setText(String text)
     {
-        this.content = content;
+        this.text = text;
     }
 }
