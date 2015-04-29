@@ -16,6 +16,6 @@
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
         
-        <a href="translate.html">Translate Page</a>
+        <a href="translate">Translate Page</a>
     </body>
 </html>

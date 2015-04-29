@@ -27,16 +27,16 @@
         </property>
     </bean>-->
     
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
-    </bean>
+    </bean>-->
     
-    <!--<bean id="viewResolver"
+    <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
-          p:suffix=".jsp" />-->
+          p:suffix=".jsp" />
 
     <!--
     The index controller.
