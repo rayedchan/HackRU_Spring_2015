@@ -8,10 +8,13 @@ import java.util.List;
  */
 public class HackRUSpring2015
 {
-    public static final String GOOGLE_API_KEY = "AIzaSyBlEDmdkVmMLr0rE0DxkuDY-KEnP873EbE";
+    public static String GOOGLE_API_KEY = "INSERT_GOOGLE_API_KEY";
     
     public static void main(String[] args) throws Exception
     {
+        GOOGLE_API_KEY = System.getenv("GOOGLE_API_KEY"); // Fetch from environment variable
+        System.out.println(GOOGLE_API_KEY);
+        
         GoogleTranslate gTransObj = new GoogleTranslate(GOOGLE_API_KEY);
         List<Language> languages =  gTransObj.getSupportedLanguages();
         gTransObj.translate("en", "es", "I do like.");

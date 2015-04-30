@@ -34,8 +34,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class TranslateController 
 {
     // Custom Google Translate Utility
-    private final GoogleTranslate gTranslateOps = new GoogleTranslate("AIzaSyBlEDmdkVmMLr0rE0DxkuDY-KEnP873EbE"); 
-    // TODO: Get API Key from system variable    
+    private final GoogleTranslate gTranslateOps = new GoogleTranslate(System.getenv("GOOGLE_API_KEY")); 
     
     @RequestMapping(value="/translate", method = RequestMethod.GET)
     public ModelAndView viewTranslateForm(ModelMap model) throws Exception 
@@ -44,6 +43,7 @@ public class TranslateController
         HashMap<String,String> languages = getSupportedLanguages();
         Map<String, String> sortedLanguagesMap = sortByComparator(languages);
 	model.addAttribute("languages", sortedLanguagesMap);
+        // TODO: Load supported languages on app startup
         
         // Create new Object to represent form
         TranslateForm translateForm = new TranslateForm(); // to be used to store input from form
