@@ -196,6 +196,22 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
                 <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals><goal>copy</goal></goals>
+                  <configuration>
+                      <artifactItems>
+                          <artifactItem>
+                              <groupId>com.github.jsimone</groupId>
+                              <artifactId>webapp-runner</artifactId>
+                              <version>7.0.57.2</version>
+                              <destFileName>webapp-runner.jar</destFileName>
+                          </artifactItem>
+                      </artifactItems>
+                  </configuration>
+              </execution>
+          </executions>
+                <!--<executions>
                     <execution>
                         <phase>validate</phase>
                         <goals>
@@ -215,7 +231,8 @@
                             </artifactItems>
                         </configuration>
                     </execution>
-                </executions>
+                </executions>-->
+                
             </plugin>
         </plugins>
     </build>
