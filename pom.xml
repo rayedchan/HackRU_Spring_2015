@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rayedchan</groupId>
-    <artifactId>HackRU_Spring_2015</artifactId>
+    <artifactId>HackRUSpring2015</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>HackRU_Spring_2015</name>
+    <name>HackRUSpring2015</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -207,6 +207,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>javax</groupId>
+           
                                     <artifactId>javaee-endorsed-api</artifactId>
                                     <version>7.0</version>
                                     <type>jar</type>
