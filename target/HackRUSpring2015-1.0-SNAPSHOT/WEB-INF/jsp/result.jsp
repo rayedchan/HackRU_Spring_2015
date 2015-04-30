@@ -1,0 +1,38 @@
+<%-- 
+    Document   : translatesuccess
+    Created on : Apr 28, 2015, 7:57:12 AM
+    Author     : rayedchan
+--%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Registration Success</title>
+</head>
+<body>
+<h2>Submitted Information</h2>
+   <table>
+    <tr>
+        <td>Text: </td>
+        <td>${text}</td>
+    </tr>
+    <tr>
+        <td>Translate From: </td>
+        <td>${sourceLanguage}</td>
+    </tr>
+    <tr>
+        <td>Translate To: </td>
+        <td>${targetLanguage}</td>
+    </tr>
+    <tr>
+        <td>Translated Text: </td>
+        <td>${translatedText}</td>
+    </tr>
+</table> 
+<br />
+<a href="translate">Translate Page</a>
+</body>
+</html>
