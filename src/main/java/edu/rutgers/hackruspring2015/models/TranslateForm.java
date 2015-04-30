@@ -1,12 +1,16 @@
 package edu.rutgers.hackruspring2015.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * Translate Form
  * @author rayedchan
  */
 public class TranslateForm 
 {
+    @NotEmpty(message="Text is required.")
     private String text;
+    
     private String targetLanguage;
     private String sourceLanguage;
     

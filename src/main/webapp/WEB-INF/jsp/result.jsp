@@ -32,5 +32,7 @@
         <td>${translatedText}</td>
     </tr>
 </table> 
+<br />
+<a href="translate">Translate Page</a>
 </body>
 </html>

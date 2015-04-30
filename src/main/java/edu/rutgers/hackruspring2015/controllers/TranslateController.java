@@ -15,11 +15,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,15 +30,16 @@ import org.springframework.web.servlet.ModelAndView;
  * @author rayedchan
  */
 @Controller
+@SessionAttributes("languages")
 public class TranslateController 
 {
     // Custom Google Translate Utility
     private final GoogleTranslate gTranslateOps = new GoogleTranslate("AIzaSyBlEDmdkVmMLr0rE0DxkuDY-KEnP873EbE"); 
-    // TODO: Get API Key from system variable
+    // TODO: Get API Key from system variable    
     
     @RequestMapping(value="/translate", method = RequestMethod.GET)
     public ModelAndView viewTranslateForm(ModelMap model) throws Exception 
-    {
+    {   
         // Populate combox box for supported languages
         HashMap<String,String> languages = getSupportedLanguages();
         Map<String, String> sortedLanguagesMap = sortByComparator(languages);
@@ -47,52 +51,71 @@ public class TranslateController
         String commandName = "userTranslateForm"; // value of attribute "commandName" on HTML form
         return new ModelAndView(viewName, commandName, translateForm);
     }
-     
-    @RequestMapping(value="/translate/process", method = RequestMethod.POST)
-    public String processTranslationForm(@ModelAttribute("userTranslateForm") TranslateForm formObj, ModelMap model)
+    
+    // Put the BindingResult result parameter always directly after the parameter with the @Valid annotation.
+    // Ensure value in request mapping is the same as the action value in the jsp
+    @RequestMapping(value="/translate", method = RequestMethod.POST)
+    public ModelAndView processTranslationForm(@Valid @ModelAttribute("userTranslateForm") TranslateForm formObj, BindingResult result, ModelMap model)
     {
+        Logger.getLogger(TranslateController.class.getName()).log(Level.INFO, "Enter processTranslationForm()");
         String viewName = "result";
-   
-        try
+       
+        // Check if the model (form) is valid
+        if(result.hasErrors())
         {
-             // Get form input 
-            String srcText = formObj.getText();
-            String targetLanguage = formObj.getTargetLanguage();
-            String sourceLanguage = formObj.getSourceLanguage();
-            
-            String translatedText = "";
-            
-            // Source Language is the same as Target Language
-            if(sourceLanguage.equalsIgnoreCase(targetLanguage))
-            {
-                translatedText = srcText; // Set to user input of text
-            }
-            
-            // Languages are different then perform translation 
-            else
-            {
-                // Google API to translate
-                translatedText = this.gTranslateOps.translate(sourceLanguage, targetLanguage, srcText);
-            }
-
-            // Attributes to be used in View
-            model.addAttribute("text", srcText);
-            model.addAttribute("translatedText", translatedText);
-            model.addAttribute("targetLanguage", targetLanguage);
-            model.addAttribute("sourceLanguage", sourceLanguage);
-        } 
-        
-        catch (IOException ex) 
-        {
-            Logger.getLogger(TranslateController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        catch (Exception ex) 
-        {
-            Logger.getLogger(TranslateController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TranslateController.class.getName()).log(Level.INFO, "An error has occurred: {0}" , new Object[]{result});
+            HashMap langs = new HashMap();
+            //langs.put("en", "en");
+            //model.addAttribute("languages", langs );
+            viewName = "translate"; // Display errors on translate page
         }
-              
-        return viewName;
+        
+        else
+        {
+   
+            try
+            {
+                 // Get form input 
+                String srcText = formObj.getText();
+                String targetLanguage = formObj.getTargetLanguage();
+                String sourceLanguage = formObj.getSourceLanguage();
+
+                String translatedText = "";
+
+                // Source Language is the same as Target Language
+                if(sourceLanguage.equalsIgnoreCase(targetLanguage))
+                {
+                    translatedText = srcText; // Set to user input of text
+                }
+
+                // Languages are different then perform translation 
+                else
+                {
+                    // Google API to translate
+                    translatedText = this.gTranslateOps.translate(sourceLanguage, targetLanguage, srcText);
+                }
+
+                // Attributes to be used in View
+                model.addAttribute("text", srcText);
+                model.addAttribute("translatedText", translatedText);
+                model.addAttribute("targetLanguage", targetLanguage);
+                model.addAttribute("sourceLanguage", sourceLanguage);
+            } 
+
+            catch (IOException ex) 
+            {
+                Logger.getLogger(TranslateController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+
+            catch (Exception ex) 
+            {
+                Logger.getLogger(TranslateController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        ModelAndView mav = new ModelAndView(viewName);
+        mav.addObject("userTranslateForm", formObj);
+        return mav;
     }
     
     /**

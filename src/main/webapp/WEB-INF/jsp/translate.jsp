@@ -11,11 +11,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Google Translate API</title>
+        <style>
+            .error 
+            {
+                color: #ff0000;
+            }
+
+            .errorblock
+            {
+                color: #000;
+                background-color: #ffEEEE;
+                border: 3px solid #ff0000;
+                padding: 8px;
+                margin: 16px;
+            }
+        </style>
     </head>
     <body>
     <div align="center">
         <h2>Text Translator</h2>
-        <form:form action="translate/process" method="POST" commandName="userTranslateForm">
+        <form:form action="translate" method="POST" commandName="userTranslateForm">
+            <form:errors path="*" cssClass="errorblock" element="div" /> <!-- Display Errors -->
             <table>
                 <tr>
                     <td><form:label path="text">Text: </form:label></td>
