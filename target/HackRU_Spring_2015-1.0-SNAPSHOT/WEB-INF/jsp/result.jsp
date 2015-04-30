@@ -19,7 +19,11 @@
         <td>Text: </td>
         <td>${text}</td>
     </tr>
-     <tr>
+    <tr>
+        <td>Translate To: </td>
+        <td>${targetLanguage}</td>
+    </tr>
+    <tr>
         <td>Translated Text: </td>
         <td>${translatedText}</td>
     </tr>

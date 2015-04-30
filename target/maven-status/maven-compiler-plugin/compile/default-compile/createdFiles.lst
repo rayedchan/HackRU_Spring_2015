@@ -1,5 +1,6 @@
 edu\rutgers\hackruspring2015\HackRUSpring2015.class
 edu\rutgers\hackruspring2015\GoogleTranslate.class
+edu\rutgers\hackruspring2015\controllers\TranslateController$1.class
 edu\rutgers\hackruspring2015\gson\lang\objects\Data.class
 edu\rutgers\hackruspring2015\controllers\TranslateController.class
 edu\rutgers\hackruspring2015\models\TranslateForm.class

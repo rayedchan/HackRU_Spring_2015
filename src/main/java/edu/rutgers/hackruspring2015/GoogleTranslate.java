@@ -158,7 +158,7 @@ public class GoogleTranslate
             }
             
             // Read data input stream
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
            
             // Construct String of data from input stream
             StringBuilder strBuilder = new StringBuilder();
@@ -208,4 +208,4 @@ public class GoogleTranslate
         
         return null;
     }
-}
+}	

@@ -7,6 +7,7 @@ package edu.rutgers.hackruspring2015.models;
 public class TranslateForm 
 {
     private String text;
+    private String targetLanguage;
     
     public String getText()
     {
@@ -16,5 +17,15 @@ public class TranslateForm
     public void setText(String text)
     {
         this.text = text;
+    }
+    
+    public String getTargetLanguage()
+    {
+        return this.targetLanguage;
+    }
+    
+    public void setTargetLanguage(String targetLanguage)
+    {
+        this.targetLanguage = targetLanguage;
     }
 }

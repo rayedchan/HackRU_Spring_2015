@@ -14,15 +14,19 @@
     </head>
     <body>
     <div align="center">
-        <h2>Translator</h2>
+        <h2>Text Translator</h2>
         <form:form action="translate/process" method="POST" commandName="userTranslateForm">
             <table>
                 <tr>
-                    <td><form:label path="text">Text</form:label></td>
+                    <td><form:label path="text">Text: </form:label></td>
                     <td><form:input path="text" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"><input type="submit" value="Submit" /></td>
+                    <td><form:label path="targetLanguage">Translate To: </form:label></td>
+                    <td><form:select path="targetLanguage"><form:options items="${languages}" /></form:select></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left"><input type="submit" value="Submit" /></td>
                 </tr>
             </table>
         </form:form>
