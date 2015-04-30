@@ -58,13 +58,28 @@ public class TranslateController
              // Get form input 
             String srcText = formObj.getText();
             String targetLanguage = formObj.getTargetLanguage();
+            String sourceLanguage = formObj.getSourceLanguage();
             
-            // Google API to translate
-            String translatedText = this.gTranslateOps.translate("en", targetLanguage, srcText);
+            String translatedText = "";
+            
+            // Source Language is the same as Target Language
+            if(sourceLanguage.equalsIgnoreCase(targetLanguage))
+            {
+                translatedText = srcText; // Set to user input of text
+            }
+            
+            // Languages are different then perform translation 
+            else
+            {
+                // Google API to translate
+                translatedText = this.gTranslateOps.translate(sourceLanguage, targetLanguage, srcText);
+            }
 
+            // Attributes to be used in View
             model.addAttribute("text", srcText);
             model.addAttribute("translatedText", translatedText);
             model.addAttribute("targetLanguage", targetLanguage);
+            model.addAttribute("sourceLanguage", sourceLanguage);
         } 
         
         catch (IOException ex) 

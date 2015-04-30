@@ -20,6 +20,10 @@
         <td>${text}</td>
     </tr>
     <tr>
+        <td>Translate From: </td>
+        <td>${sourceLanguage}</td>
+    </tr>
+    <tr>
         <td>Translate To: </td>
         <td>${targetLanguage}</td>
     </tr>

@@ -20,6 +20,10 @@
                 <tr>
                     <td><form:label path="text">Text: </form:label></td>
                     <td><form:input path="text" /></td>
+                </tr
+                <tr>
+                    <td><form:label path="sourceLanguage">Translate From: </form:label></td>
+                    <td><form:select path="sourceLanguage"><form:options items="${languages}" /></form:select></td>
                 </tr>
                 <tr>
                     <td><form:label path="targetLanguage">Translate To: </form:label></td>
