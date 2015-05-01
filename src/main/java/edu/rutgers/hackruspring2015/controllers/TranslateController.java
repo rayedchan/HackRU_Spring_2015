@@ -26,11 +26,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ * Controller for staging Translate Form Object and processing Translate Form.
  * @author rayedchan
  */
 @Controller
-@SessionAttributes("languages")
+@SessionAttributes("languages") // Keep "languages" data in session to prevent clearing of combobox after submission 
 public class TranslateController 
 {
     // Custom Google Translate Utility
@@ -64,15 +64,11 @@ public class TranslateController
         if(result.hasErrors())
         {
             Logger.getLogger(TranslateController.class.getName()).log(Level.INFO, "An error has occurred: {0}" , new Object[]{result});
-            HashMap langs = new HashMap();
-            //langs.put("en", "en");
-            //model.addAttribute("languages", langs );
             viewName = "translate"; // Display errors on translate page
         }
         
         else
         {
-   
             try
             {
                  // Get form input 
